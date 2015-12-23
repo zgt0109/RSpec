@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
-  has_many :phones
-  accepts_nested_attributes_for :phones
+  has_many :phones, dependent: :delete_all
+  accepts_nested_attributes_for :phones, :allow_destroy => true
 
   validates :firstname, presence: true
   validates :lastname, presence: true
